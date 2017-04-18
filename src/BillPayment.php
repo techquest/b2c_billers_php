@@ -19,5 +19,15 @@
                 return null;
             }
         }
+        public function get($key){//generic get
+            
+            try{
+                //echo Constants::MAP[$key];
+                return $this->interswitch->send(Constants::MAP[$key], Constants::GET);
+            }
+            catch(Exception $e) {
+                return null;
+            }
+        }
     }
 ?>
