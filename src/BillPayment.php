@@ -43,5 +43,17 @@
                 return null;
             }
         }
+
+        public function get_biller_payment_items($id){
+            try{
+                $prefixURL = Constants::GET_CATEGORY_BILLERS_PAYMENTITEMS_PREFIX;
+                $suffixURL = Constants::GET_CATEGORY_BILLERS_PAYMENTITEMS_SUFFIX;
+
+                return $this->interswitch->send($prefixURL.$id.$suffixURL, Constants::GET);
+            }
+            catch(Exception $e){
+                return null;
+            }
+        }
     }
 ?>
