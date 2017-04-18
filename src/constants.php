@@ -9,5 +9,7 @@
             "categorys" => "api/v2/quickteller/categorys",
             "billers" =>"api/v2/quickteller/billers"
         );
+        const GET_CATEGORYS_BILLERS_PREFIX = "api/v2/quickteller/categorys/";
+        const GET_CATEGORYS_BILLERS_SUFFIX = "/billers";
     }
 ?>

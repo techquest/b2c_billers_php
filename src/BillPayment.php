@@ -29,5 +29,19 @@
                 return null;
             }
         }
+        public function get_category_billers($id){
+
+            try{
+
+                $prefixURL = Constants::GET_CATEGORYS_BILLERS_PREFIX;
+                $suffixURL = Constants::GET_CATEGORYS_BILLERS_SUFFIX;
+
+                return $this->interswitch->send($prefixURL.$id.$suffixURL, Constants::GET);
+
+            }
+            catch(Exception $e){
+                return null;
+            }
+        }
     }
 ?>
