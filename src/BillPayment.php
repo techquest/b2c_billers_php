@@ -91,5 +91,19 @@
                 return null;
             }
         }
+        public function make_payment($amount, $customer_id, $payment_code){
+            try{
+
+                $payment = new \stdClass();
+                $payment->amount = $amount;
+                $payment->paymentCode = $payment_code;
+                $payment->customerId = $customer_id;
+
+                return $this->interswitch->send(Constants::PAYMENT_REQUEST_RESOURCE_URL, Constants::POST, json_encode($payment));
+            }
+            catch(Exception $e){
+                return null;
+            }
+        }
     }
 ?>

@@ -16,5 +16,6 @@
         const GET_CATEGORY_BILLERS_PAYMENTITEMS_SUFFIX = "/paymentitems";
         const TRANSACTION_INQUIRY_URL = "api/v2/quickteller/transactions/inquirys";
         const VALIDATE_CUSTOMER_URL = "api/v2/quickteller/customers/validations";
+        const PAYMENT_REQUEST_RESOURCE_URL = "api/v2/quickteller/sendAdviceRequest";
     }
 ?>
