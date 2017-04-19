@@ -62,9 +62,9 @@ Quick start
 #### Composer
     "interswitch/interswitch": "dev-master"
 
-    ```
-    composer require interswitch/interswitch:dev-master
-    ```
+```
+composer require interswitch/interswitch:dev-master
+```
 
 #### Samples
 
