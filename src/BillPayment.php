@@ -71,5 +71,25 @@
                 return null;
             }
         }
+
+        public function validateCustomer($payment_code, $customer_id){
+            try{
+
+                $req = new \stdClass();
+                $arr = [];
+                $sub_obj = new \stdClass();
+                $sub_obj->paymentCode = $payment_code;
+                $sub_obj->customerId = $customer_id;
+                $arr[0] = ($sub_obj);
+                $req->customers = $arr;
+                //echo "\n ".json_encode($req)." ".json_encode($sub_obj);
+
+                return $this->interswitch->send(Constants::VALIDATE_CUSTOMER_URL, Constants::POST, json_encode($req));
+
+            }
+            catch(Exception $e){
+                return null;
+            }
+        }
     }
 ?>
