@@ -55,5 +55,21 @@
                 return null;
             }
         }
+        public function transaction_inquiry($payment_code, $customer_id){
+            try{
+
+                $req = new \stdClass(); 
+                $req->paymentCode = $payment_code;
+                $req->customerId = $customer_id;
+
+                echo "\n ".json_encode($req);
+
+                return $this->interswitch->send(Constants::TRANSACTION_INQUIRY_URL, Constants::POST, json_encode($req));
+
+            }
+            catch(Exception $e){
+                return null;
+            }
+        }
     }
 ?>
