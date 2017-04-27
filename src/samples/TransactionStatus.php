@@ -4,11 +4,17 @@
     use Billers;
     require_once __DIR__ . '/../../vendor/autoload.php';
 
-    class MakePayment extends BaseSample{
+    /**
+    * Purpose: To get the status of a transaction after making a payment.
+    * 
+    * 1. Make Payment with a unique requestReference
+    * 2. Query for the transaction
+    */
+    class TransactionStatus extends BaseSample{
         
-        private $key = "makepayment";
-        public function run($amount, $customerId, $paymentCode, $requestRef){
-            return $this->billPayment->make_payment($amount, $customerId, $paymentCode, $requestRef);
+        private $key = "transactionstatus";
+        public function run($requestRef){
+            return $this->billPayment->get_transaction_status($requestRef);
         }
     }
 
@@ -35,16 +41,22 @@
     $billers = new MakePayment();
 
     $response = $billers->run($amount, $customerId, $paymentCode, $requestRef);
-    echo "\n".json_encode($response);
-    if($response != null) {
 
+    $transactionStatus = new TransactionStatus();
+
+    $transactionStatus = $transactionStatus->run($requestRef);
+
+    if($transactionStatus != null) {
         $response_code = json_decode($response["HTTP_CODE"]);
         $response_body = json_decode($response["RESPONSE_BODY"]);
 
         if($response_code == "200") {
+
             $transactionRef = $response_body->transactionRef;
-            
+
+            echo "\n ".$transactionRef;
         }
     }
+    
     
  ?>
