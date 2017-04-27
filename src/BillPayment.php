@@ -91,15 +91,27 @@
                 return null;
             }
         }
-        public function make_payment($amount, $customer_id, $payment_code){
+        public function get_transaction_status($requestRef){
+            try{
+                $header = [
+                    'requestReference: '. $requestRef
+                ];
+                return $this->interswitch->send(Constants::TRANSACTION_STATUS_RESOURCE_URL, Constants::GET, null, $header);
+
+            }catch(Exception $ex){
+                return null;
+            }
+        }
+        public function make_payment($amount, $customer_id, $payment_code, $requestRef){
             try{
 
                 $payment = new \stdClass();
                 $payment->amount = $amount;
                 $payment->paymentCode = $payment_code;
                 $payment->customerId = $customer_id;
+                $payment->requestReference = $requestRef;
 
-                return $this->interswitch->send(Constants::PAYMENT_REQUEST_RESOURCE_URL, Constants::POST, json_encode($payment));
+                return $this->interswitch->send(Constants::MAKE_PAYMENT_RESOURCE_URL, Constants::POST, json_encode($payment));
             }
             catch(Exception $e){
                 return null;
