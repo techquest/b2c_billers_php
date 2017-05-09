@@ -23,7 +23,7 @@
 
         public function run(){
 
-            $paymentCode = "40201";//glo recharge test
+            $paymentCode = "90101"; //paymentCode for test="40201", paymentCode for sandbox=90101
         
             //sample customerId for the above paymentCode
             $customerId = "07030241757";
@@ -87,7 +87,7 @@
                     * 
                     * In the example below, we will be using "test" as out referencePrefix
                     */
-                $referencePrefix = "test"; //
+                $referencePrefix = "1456"; //prefix for test environment, use test
                 
                 $requestRef = mt_rand(100000, 999999);// unique reference number
 

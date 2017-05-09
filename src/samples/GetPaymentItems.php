@@ -25,7 +25,7 @@
             //get the billerId
             //based on this billerId, get the payment items for that biller
             $biller_array = $response_body->billers;
-            $billerid = $biller_array[0]->billerid;
+            $billerid = $biller_array[2]->billerid;
 
             echo "\n billerid ".$billerid;
 
